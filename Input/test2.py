@@ -1,22 +1,26 @@
+import helper
+
 settings_file="MSSM.py"
 blocks=['MODSEL','SMINPUTS','MINPAR','SPhenoInput']
 
-scan="FirstTry"
+scans=["FirstTry","SecondTry"]
 scan_type="Grid"
 append_points= False
 include_HiggsBounds= True
 include_HiggsSignals= True
-include_MicrOmegas= False
+include_MicrOmegas= True
 
-use_cores=1
+use_cores=2
 
-MODSEL=[
+BLOCK=helper.init_blocks(blocks,scans)
+
+BLOCK['ALL']['MODSEL']=[
     ['1',{'value': 1}],
     ['2',{'value': 1}],  
     ['6',{'value': 1}]
     ]
 
-SMINPUTS=[
+BLOCK['ALL']['SMINPUTS']=[
  ['2', {'value': 1.166370E-05}],    
  ['3', {'value': 1.187000E-01}],    
  ['4', {'value': 9.118870E+01}],    
@@ -24,8 +28,8 @@ SMINPUTS=[
  ['6', {'value': 1.735000E+02}],    
  ['7', {'value': 1.776690E+00}] ]   
 
-MINPAR=[
-    ['1',{'min':200., 'max':20000.,'steps':50, 'distribution': "LOG"}],
+BLOCK['FirstTry']['MINPAR']=[
+    ['1',{'min':200., 'max':20000.,'steps':4, 'distribution': "LOG"}],
     ['2',{'value':"MINPAR['1']"}],    
 #    ['2',{'value':500.}],    
     ['3',{'min':5.,'max':50.,'steps':3, 'distribution': "LINEAR"}],     
@@ -33,7 +37,16 @@ MINPAR=[
     ['5',{'value': 0.}]        
     ]
 
-SPhenoInput=[
+BLOCK['SecondTry']['MINPAR']=[
+    ['1',{'min':200., 'max':5000.,'steps':4, 'distribution': "LOG"}],
+    ['2',{'value':"MINPAR['1']"}],    
+#    ['2',{'value':500.}],    
+    ['3',{'min':5.,'max':50.,'steps':3, 'distribution': "LINEAR"}],     
+    ['4',{'value': 1.}],
+    ['5',{'value': 0.}]        
+    ]
+
+BLOCK['ALL']['SPhenoInput']=[
 ['  1',{'value': -1          }],
 ['  2',{'value':  0          }],
 ['  7',{'value':  0          }],
