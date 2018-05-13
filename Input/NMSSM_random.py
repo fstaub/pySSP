@@ -2,6 +2,7 @@ settings_file="NMSSM.py"
 scans=["CheckUniNMSSM1", "CheckUniNMSSM2"]
 scan_type="Random"
 scan_points=5000000
+use_cores=4
 
 append_points= False
 include_HiggsBounds= False
@@ -44,7 +45,7 @@ BLOCK['ALL']['EXTPAR']=[
     ['65',{'min': 200.,'max':5000., 'distribution': "LINEAR"}]    
     ]
 
-BLOCK['ALL']['MSOFT']=[
+BLOCK['ALL']['MSOFTIN']=[
     ['1',{'min':100.,'max':1500., 'distribution': "LINEAR"}],
     ['2',{'min':150.,'max':1500., 'distribution': "LINEAR"}],
     ['3',{'min':1500.,'max':3000., 'distribution': "LINEAR"}]  
@@ -57,7 +58,7 @@ BLOCK['ALL']['MSE2IN']=[
     ['3 3',{'value': 1.0E+06}]
     ]
 
-BLOCK['ALL']['MSELIN']=[
+BLOCK['ALL']['MSL2IN']=[
     ['1 1',{'value': 1.0E+06}],
     ['2 2',{'value': 1.0E+06}],  
     ['3 3',{'value': 1.0E+06}]
@@ -72,13 +73,13 @@ BLOCK['ALL']['MSD2IN']=[
 BLOCK['ALL']['MSQ2IN']=[
     ['1 1',{'value': 4.0E+06}],
     ['2 2',{'value': 4.0E+06}],  
-    ['3 3',{'min': 4.00E+04., 'max':9.00E+06, 'distribution': "LINEAR"}]
+    ['3 3',{'min': 4.00E+04, 'max':9.00E+06, 'distribution': "LINEAR"}]
     ]
 
-BLOCK['ALL']['MSQUIN']=[
+BLOCK['ALL']['MSU2IN']=[
     ['1 1',{'value': 4.0E+06}],
     ['2 2',{'value': 4.0E+06}],  
-    ['3 3',{'min': 4.00E+04., 'max':9.00E+06, 'distribution': "LINEAR"}]
+    ['3 3',{'min': 4.00E+04, 'max':9.00E+06, 'distribution': "LINEAR"}]
     ]
 
 
@@ -141,6 +142,11 @@ BLOCK['ALL']['SPhenoInput']=[
 ['521',{'value': 1.          }],
 ['525',{'value': 0.          }],
 ['530',{'value': 1.          }],
+['440',{'value': 1.          }],
+['441',{'value': 1.          }],
+['442',{'value': 250.        }],
+['443',{'value': 5000.       }],
+['444',{'value': 50.         }],
 ['550',{'value': 0.          }]]
 
 
