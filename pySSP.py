@@ -60,7 +60,10 @@ def writeblock(name,lhfile,step):
          else:
             lhfile.write(' %s %10.4e # \n' % (key, 1.*eval(clist[key])))
      else:
-         lhfile.write(' %s %10.4e # \n' % (key, 1.*clist[key]))
+      if isinstance(clist[key],int):
+         lhfile.write(' %s %i # \n' % (key, clist[key]))
+      else:   
+         lhfile.write(' %s %10.4e # \n' % (key, 1.*clist[key]))          
 
 
 def run_spheno(settings,out_file):
@@ -190,6 +193,7 @@ def run_scan(scan,scan_info,settings,ct,total):
       alist=list(itertools.product(*all_i))
     elif scan_info["scan_type"]=="Random":
       steps.append(scan_info['scan_points'])
+      alist=[]
     
     out_dir=os.path.join(cwd,"Output",scan)
     if scan_info["append_points"]==False and os.path.exists(out_dir):
