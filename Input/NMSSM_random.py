@@ -1,3 +1,5 @@
+import helper
+
 settings_file="NMSSM.py"
 scans=["CheckUniNMSSM1", "CheckUniNMSSM2"]
 scan_type="Random"
@@ -11,7 +13,7 @@ include_MicrOmegas= False
 check_saving=True
 
 def condition_to_save(spc):
-    if (spc.blocks['MINPAR'][1]<1000.):
+    if (123.<spc.blocks['MASS'][25]<128.) or (123.<spc.blocks['MASS'][35]<128.):
         return(True)
     else:
         return(False)
